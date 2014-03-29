@@ -1,25 +1,49 @@
+import com.typesafe.config.Config;
+import com.typesafe.config.ConfigFactory;
+import common.DriverFactory;
 import cucumber.api.PendingException;
+import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.AfterClass;
+import org.openqa.selenium.WebDriver;
 
 public class SignUp {
-    @Given("^I am on the email sign up page$")
-    public void iAmOnTheEmailSignUpPage() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    protected WebDriver driver;
+    protected Config conf;
+
+
+    public SignUp() {
+        driver = DriverFactory.createDriver("firefox");
+        conf = ConfigFactory.load();
     }
+
+
+    @After
+    public void tearDown(){
+        driver.quit();
+    }
+
+    @Given("^I am on the email sign up page$")
+    public void iAmOnTheEmailSignUpPage() {
+        driver.get(conf.getString("moo-hw.host")+"signup");
+
+    }
+
 
     @When("^I enter a valid email address$")
     public void iEnterAValidEmailAddress() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
 
     @Then("^I am added to the mailing list$")
     public void iAmAddedToTheMailingList() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
+
+
+
+
 
 }
