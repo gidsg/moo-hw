@@ -3,10 +3,10 @@ import com.typesafe.config.ConfigFactory;
 import common.DriverFactory;
 import cucumber.api.PendingException;
 import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.junit.AfterClass;
 import org.openqa.selenium.WebDriver;
 
 public class SignUp {
@@ -15,10 +15,13 @@ public class SignUp {
 
 
     public SignUp() {
-        driver = DriverFactory.createDriver("firefox");
         conf = ConfigFactory.load();
     }
 
+    @Before
+    public void tearUp() {
+        driver = DriverFactory.createDriver("firefox");
+    }
 
     @After
     public void tearDown(){
