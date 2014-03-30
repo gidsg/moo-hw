@@ -1,17 +1,21 @@
 import PageObjects.SignUpPage;
+import PageObjects.ThankYouPage;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import common.DriverFactory;
-import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.UUID;
+
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class SignUp {
     protected WebDriver driver;
@@ -47,8 +51,8 @@ public class SignUp {
 
     @Then("^I see a thank you confirmation message$")
     public void iSeeAThankYouConfirmationMessage() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        ThankYouPage page = PageFactory.initElements(driver, ThankYouPage.class);
+        assertThat(driver.findElement(By.tagName("h1")).getText(), containsString(page.getThankYouHeading())); // fails:
     }
 
 
