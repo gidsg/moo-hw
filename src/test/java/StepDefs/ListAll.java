@@ -1,3 +1,5 @@
+package StepDefs;
+
 import PageObjects.SignUpPage;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
