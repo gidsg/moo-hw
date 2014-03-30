@@ -44,13 +44,13 @@ public class SignUp {
 
 
     @When("^I enter a valid email address$")
-    public void iEnterAValidEmailAddress() throws Throwable {
+    public void iEnterAValidEmailAddress() {
         SignUpPage page = PageFactory.initElements(driver, SignUpPage.class);
         page.SignUp(emailAddress);
     }
 
     @Then("^I see a thank you confirmation message$")
-    public void iSeeAThankYouConfirmationMessage() throws Throwable {
+    public void iSeeAThankYouConfirmationMessage() {
         ThankYouPage page = PageFactory.initElements(driver, ThankYouPage.class);
         assertThat(page.getThankYouHeadingElement().getText(), is(page.getThankYouHeading()));
     }
