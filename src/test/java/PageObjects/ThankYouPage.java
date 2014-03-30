@@ -19,15 +19,4 @@ public class ThankYouPage {
     @FindBy(how = How.CLASS_NAME, using = "main")
     WebElement thankYouBodyTextElement;
 
-    public String getThankYouHeading() {
-        return thankYouHeading;
-    }
-
-    private String thankYouHeading="Thank your for your details!";
-
-    public String getThankYouText() {
-        return thankYouText;
-    }
-
-    private String thankYouText="You have signed up with email";
 }

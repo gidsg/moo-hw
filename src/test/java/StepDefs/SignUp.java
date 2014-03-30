@@ -1,3 +1,5 @@
+package StepDefs;
+
 import PageObjects.SignUpPage;
 import PageObjects.ThankYouPage;
 import com.typesafe.config.Config;
@@ -43,8 +45,8 @@ public class SignUp {
     @Then("^I see a thank you confirmation message$")
     public void iSeeAThankYouConfirmationMessage() {
         ThankYouPage page = PageFactory.initElements(driver, ThankYouPage.class);
-        assertThat(page.getThankYouHeadingElement().getText(), is(page.getThankYouHeading()));
-        assertThat(page.getThankYouBodyTextElement().getText(), containsString(page.getThankYouText()+" "+emailAddress));
+        assertThat(page.getThankYouHeadingElement().getText(), is("Thank your for your details!"));
+        assertThat(page.getThankYouBodyTextElement().getText(), containsString("You have signed up with email"+" "+emailAddress));
     }
 
 
