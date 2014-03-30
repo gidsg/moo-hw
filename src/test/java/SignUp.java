@@ -3,6 +3,7 @@ import PageObjects.ThankYouPage;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import common.DriverFactory;
+import common.SharedDriver;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
@@ -18,24 +19,16 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class SignUp {
-    protected WebDriver driver;
+    private final WebDriver driver;
     protected Config conf;
     protected String emailAddress=("gids-"+ UUID.randomUUID()+"@example.org");
 
 
-    public SignUp() {
+    public SignUp(SharedDriver driver) {
+        this.driver = driver;
         conf = ConfigFactory.load();
     }
 
-    @Before
-    public void tearUp() {
-        driver = DriverFactory.createDriver(conf.getString("moo-hw.driver"));
-    }
-
-    @After
-    public void tearDown(){
-        driver.quit();
-    }
 
     @Given("^I am on the email sign up page$")
     public void iAmOnTheEmailSignUpPage() {
