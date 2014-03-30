@@ -8,18 +8,18 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.UUID;
 
-import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class SignUp {
     protected WebDriver driver;
     protected Config conf;
+    protected String emailAddress=("gids-"+ UUID.randomUUID()+"@example.org");
 
 
     public SignUp() {
@@ -46,13 +46,13 @@ public class SignUp {
     @When("^I enter a valid email address$")
     public void iEnterAValidEmailAddress() throws Throwable {
         SignUpPage page = PageFactory.initElements(driver, SignUpPage.class);
-        page.SignUp("gids-"+ UUID.randomUUID()+"@example.org");
+        page.SignUp(emailAddress);
     }
 
     @Then("^I see a thank you confirmation message$")
     public void iSeeAThankYouConfirmationMessage() throws Throwable {
         ThankYouPage page = PageFactory.initElements(driver, ThankYouPage.class);
-        assertThat(driver.findElement(By.tagName("h1")).getText(), containsString(page.getThankYouHeading())); // fails:
+        assertThat(page.getThankYouHeadingElement().getText(), is(page.getThankYouHeading()));
     }
 
 
