@@ -12,6 +12,13 @@ public class ThankYouPage {
     @FindBy(how = How.TAG_NAME, using = "H1")
     WebElement thankYouHeadingElement;
 
+    public WebElement getThankYouBodyTextElement() {
+        return thankYouBodyTextElement;
+    }
+
+    @FindBy(how = How.CLASS_NAME, using = "main")
+    WebElement thankYouBodyTextElement;
+
     public String getThankYouHeading() {
         return thankYouHeading;
     }

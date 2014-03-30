@@ -13,6 +13,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.UUID;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -53,6 +54,7 @@ public class SignUp {
     public void iSeeAThankYouConfirmationMessage() {
         ThankYouPage page = PageFactory.initElements(driver, ThankYouPage.class);
         assertThat(page.getThankYouHeadingElement().getText(), is(page.getThankYouHeading()));
+        assertThat(page.getThankYouBodyTextElement().getText(), containsString(page.getThankYouText()+" "+emailAddress));
     }
 
 
