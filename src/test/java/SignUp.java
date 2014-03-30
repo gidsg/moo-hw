@@ -20,7 +20,7 @@ public class SignUp {
 
     @Before
     public void tearUp() {
-        driver = DriverFactory.createDriver("firefox");
+        driver = DriverFactory.createDriver(conf.getString("moo-hw.driver"));
     }
 
     @After
