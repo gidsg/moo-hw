@@ -1,3 +1,4 @@
+import PageObjects.SignUpPage;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import common.DriverFactory;
@@ -8,6 +9,9 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
+import java.util.UUID;
 
 public class SignUp {
     protected WebDriver driver;
@@ -37,11 +41,13 @@ public class SignUp {
 
     @When("^I enter a valid email address$")
     public void iEnterAValidEmailAddress() throws Throwable {
-        throw new PendingException();
+        SignUpPage page = PageFactory.initElements(driver, SignUpPage.class);
+        page.SignUp("gids-"+ UUID.randomUUID()+"@example.org");
     }
 
-    @Then("^I am added to the mailing list$")
-    public void iAmAddedToTheMailingList() throws Throwable {
+    @Then("^I see a thank you confirmation message$")
+    public void iSeeAThankYouConfirmationMessage() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
 
