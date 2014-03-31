@@ -10,7 +10,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import sun.security.util.PendingException;
 
 import java.util.UUID;
 
@@ -77,6 +76,16 @@ public class SignUp {
     @Then("^I see an error message saying the email address is already subscribed$")
     public void iSeeAnErrorMessageSayingTheEmailAddressIsAlreadySubscribed() {
         assertThat(page.getErrorMessageElement().getText(), is("This email has already been signed up"));
+    }
+
+    @When("^I enter an invalid email address$")
+    public void iEnterAnInvalidEmailAddress() throws Throwable {
+        page.SignUp("invalid");
+    }
+
+    @Then("^I see an error message to provide a valid email address$")
+    public void iSeeAnErrorMessageToProvideAValidEmailAddress()  {
+        assertThat(page.getErrorMessageElement().getText(), is("Please provide a valid email address"));
     }
 
 

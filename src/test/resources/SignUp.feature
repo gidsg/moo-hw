@@ -11,6 +11,10 @@ Feature: Email Signup
     When I leave the email field blank
     Then I see an error message
 
+  Scenario: Enter invalid email address
+    When I enter an invalid email address
+    Then I see an error message to provide a valid email address
+
   Scenario: Sign up with existing email address
     Given I sign-up as "gidsgoldberg@gmail.com"
     When I sign-up again as "gidsgoldberg@gmail.com"
