@@ -2,6 +2,7 @@ Feature: Email Signup
   Background:
     Given I am on the email sign up page
 
+  @happypath
   Scenario: Sign up a new valid email address
     When I enter a valid email address
     Then I see a thank you confirmation message
