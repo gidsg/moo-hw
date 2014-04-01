@@ -61,12 +61,12 @@ public class SignUp {
     }
 
     @Given("^I sign-up as \"(.*?)\"$")
-    public void iSignUpAs(String emailAddress) throws Throwable {
+    public void iSignUpAs(String emailAddress) {
         page.SignUp(emailAddress);
     }
 
     @When("^I sign-up again as \"(.*?)\"$")
-    public void iSignUpAgainAs(String emailAddress) throws Throwable {
+    public void iSignUpAgainAs(String emailAddress) {
       // need to navigate away to let us reload the sign-up page
         driver.get("about:blank");
         driver.get(conf.getString("moo-hw.host")+"signup");
@@ -79,7 +79,7 @@ public class SignUp {
     }
 
     @When("^I enter an invalid email address$")
-    public void iEnterAnInvalidEmailAddress() throws Throwable {
+    public void iEnterAnInvalidEmailAddress() {
         page.SignUp("invalid");
     }
 
