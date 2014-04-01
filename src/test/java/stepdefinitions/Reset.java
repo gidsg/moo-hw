@@ -1,7 +1,7 @@
-package StepDefs;
+package stepdefinitions;
 
-import PageObjects.ListAllPage;
-import PageObjects.ResetPage;
+import pages.ListAllPage;
+import pages.ResetPage;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import common.SharedDriver;

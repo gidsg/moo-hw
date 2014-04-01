@@ -1,6 +1,6 @@
-package StepDefs;
+package stepdefinitions;
 
-import PageObjects.SignUpPage;
+import pages.SignUpPage;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import common.SharedDriver;
